@@ -1,0 +1,17 @@
+.image {
+  display: block;
+}
+
+.location {
+  font-size: x-small;
+  font-family: sans-serif;
+  margin-left: 5px;
+}
+
+@media only screen and (max-width: 550px) {
+  .image {
+    height: auto;
+    width: 100%;
+    margin: 0 auto;
+  }
+}
