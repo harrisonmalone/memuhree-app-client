@@ -13,7 +13,7 @@ class Images extends React.Component {
   };
 
   async componentDidMount() {
-    const response = await fetch("http://localhost:3000/days");
+    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/days`);
     const days = await response.json();
     this.setState({
       days: days,

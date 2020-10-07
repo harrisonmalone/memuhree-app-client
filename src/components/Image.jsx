@@ -8,7 +8,7 @@ class Image extends React.Component {
 
   async componentDidMount() {
     const { id } = this.props.match.params;
-    const response = await fetch(`http://localhost:3000/days/${id}`);
+    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/days/${id}`);
     const day = await response.json();
     this.setState({
       day: day,

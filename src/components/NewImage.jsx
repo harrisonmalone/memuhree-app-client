@@ -10,7 +10,7 @@ class NewImage extends React.Component {
   onFormSubmit = async (e) => {
     e.preventDefault();
     try {
-      await fetch("http://localhost:3000/days", {
+      await fetch(`${process.env.REACT_APP_BACKEND_URL}/days`, {
         method: "POST",
         body: JSON.stringify({ day: this.state }),
         headers: {
