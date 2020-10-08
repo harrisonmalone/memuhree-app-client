@@ -30,7 +30,7 @@ class App extends React.Component {
     }
     return (
       <Switch>
-        <Route exact path="/images" component={Images} />
+        <Route exact path={["/", "/images"]} component={Images} />
         <Route exact path="/images/new" component={NewImage} />
         <Route exact path="/images/:id" component={Image} />
       </Switch>
