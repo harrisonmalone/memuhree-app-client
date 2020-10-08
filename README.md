@@ -11,7 +11,7 @@
 
 ## Demo
 
-![](https://media.giphy.com/media/UApr7ZCbAKWwcC2VMa/giphy.gif)
+![](https://harrisons-shared-images.s3.ap-southeast-2.amazonaws.com/screen_cast_recapture.gif)
 
 The user starts on the index page for all images. This page lists images in descending order based on date. They then click on a date link and navigate to the show image page. This page displays the image itself, the date and a description.
 
