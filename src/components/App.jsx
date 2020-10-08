@@ -4,6 +4,7 @@ import Image from "./Image";
 import Images from "./Images";
 import NewImage from "./NewImage";
 import Login from "./Login";
+import Search from "./Search";
 
 class App extends React.Component {
   state = {
@@ -32,6 +33,7 @@ class App extends React.Component {
       <Switch>
         <Route exact path={["/", "/images"]} component={Images} />
         <Route exact path="/images/new" component={NewImage} />
+        <Route exact path="/images/search" component={Search} />
         <Route exact path="/images/:id" component={Image} />
       </Switch>
     );
