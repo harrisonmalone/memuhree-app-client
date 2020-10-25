@@ -43,7 +43,7 @@ class Images extends React.Component {
               return (
                 <p key={index}>
                   <Link to={`/images/${day.id}`}>{date}</Link>
-                  <HelperLink>{day.location}</HelperLink>
+                  <HelperLink black>{day.location}</HelperLink>
                 </p>
               );
             })}
