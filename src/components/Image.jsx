@@ -56,6 +56,17 @@ class Image extends React.Component {
     });
   };
 
+  onSpanDeleteClick = async (e) => {
+    const { id } = this.state
+    await fetch(`${process.env.REACT_APP_BACKEND_URL}/days/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      }
+    });
+    this.props.history.push("/images")
+  }
+
   render() {
     const { imageLoaded, portrait, day, id, edit } = this.state;
     const style = {};
@@ -103,6 +114,11 @@ class Image extends React.Component {
                 <Link to={`/images/${id}`} onClick={this.onEditLinkClick}>
                   Edit
                 </Link>
+              </HelperLink>
+              <HelperLink>
+                <span onClick={this.onSpanDeleteClick} >
+                  Delete
+                </span>
               </HelperLink>
             </p>
           </>
