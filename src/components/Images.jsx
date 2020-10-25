@@ -4,6 +4,7 @@ import { faPlusSquare } from "@fortawesome/free-solid-svg-icons";
 import { faArchive } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import moment from "moment";
+import HelperLink from "./HelperLink";
 
 class Images extends React.Component {
   state = {
@@ -20,6 +21,16 @@ class Images extends React.Component {
     });
   }
 
+  onArchiveClick = async () => {
+    const response = await fetch(
+      `${process.env.REACT_APP_BACKEND_URL}/days?archive=true`
+    );
+    const days = await response.json();
+    this.setState({
+      days: days,
+    });
+  };
+
   render() {
     const { days, plus, archive } = this.state;
     return (
@@ -32,13 +43,15 @@ class Images extends React.Component {
               return (
                 <p key={index}>
                   <Link to={`/images/${day.id}`}>{date}</Link>
-                  <span className="location">{day.location}</span>
+                  <HelperLink>{day.location}</HelperLink>
                 </p>
               );
             })}
             <div className="icons">
               <Link to="/images/new">{plus}</Link>
-              <Link to="/images">{archive}</Link>
+              <Link to="/images" onClick={this.onArchiveClick}>
+                {archive}
+              </Link>
             </div>
           </div>
         </>
