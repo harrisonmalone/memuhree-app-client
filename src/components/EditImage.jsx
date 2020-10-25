@@ -48,7 +48,7 @@ class EditImage extends React.Component {
               onChange={this.onTextAreaChange}
             />
           </div>
-          <input id="submit" type="submit" value="Submit" />
+          <input id="submit" type="submit" value="Edit" />
         </form>
       </>
     );
