@@ -1,5 +1,8 @@
 import React from "react";
 import moment from "moment";
+import HelperLink from "./HelperLink";
+import { Link } from "react-router-dom";
+import EditImage from "./EditImage";
 
 class Image extends React.Component {
   state = {
@@ -7,13 +10,20 @@ class Image extends React.Component {
   };
 
   async componentDidMount() {
+    this.fetchImage();
+  }
+
+  fetchImage = async () => {
     const { id } = this.props.match.params;
-    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/days/${id}`);
+    const response = await fetch(
+      `${process.env.REACT_APP_BACKEND_URL}/days/${id}`
+    );
     const day = await response.json();
     this.setState({
       day: day,
+      id: id,
     });
-  }
+  };
 
   onImageLoad = (e) => {
     const { clientHeight, clientWidth } = e.target;
@@ -29,13 +39,33 @@ class Image extends React.Component {
     }
   };
 
+  onEditLinkClick = () => {
+    this.setState({
+      edit: true,
+    });
+  };
+
+  toggleEdit = (newDescription) => {
+    this.setState((state) => {
+      const updatedDay = { ...this.state.day, description: newDescription };
+      console.log(updatedDay);
+      return {
+        edit: false,
+        day: updatedDay,
+      };
+    });
+  };
+
   render() {
-    const { imageLoaded, portrait, day } = this.state;
+    const { imageLoaded, portrait, day, id, edit } = this.state;
     const style = {};
     if (!day) {
       return null;
     }
     const date = moment(day.taken).format("Do MMMM YYYY");
+    if (edit) {
+      return <EditImage day={day} toggleEdit={this.toggleEdit} />;
+    }
     if (!imageLoaded) {
       style.visibility = "hidden";
     }
@@ -59,15 +89,22 @@ class Image extends React.Component {
           <>
             <h2>
               {date}
-              <span className="location">
+              <HelperLink>
                 <a
                   href={`https://www.google.com/maps/search/?api=1&query=${day.location}`}
                 >
                   {day.location}
                 </a>
-              </span>
+              </HelperLink>
             </h2>
-            <p>{day.description}</p>
+            <p>
+              {day.description}
+              <HelperLink>
+                <Link to={`/images/${id}`} onClick={this.onEditLinkClick}>
+                  Edit
+                </Link>
+              </HelperLink>
+            </p>
           </>
         )}
       </>
