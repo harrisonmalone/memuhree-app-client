@@ -15,6 +15,20 @@ class EditImage extends React.Component {
     });
   };
 
+  onImageLoad = (e) => {
+    const { clientHeight, clientWidth } = e.target;
+    if (clientHeight > clientWidth) {
+      this.setState({
+        imageLoaded: true,
+        portrait: true,
+      });
+    } else {
+      this.setState({
+        imageLoaded: true,
+      });
+    }
+  };
+
   onFormSubmit = async (e) => {
     e.preventDefault();
     const { file, description, location, id } = this.state;
@@ -34,10 +48,21 @@ class EditImage extends React.Component {
   };
 
   render() {
-    const { url, description } = this.state;
+    const { url, description, imageLoaded, portrait } = this.state;
+    const style = {}
+    if (!imageLoaded) {
+      style.visibility = "hidden";
+    }
+    if (portrait) {
+      style.width = "";
+      style.maxHeight = "700px";
+      style.margin = "0 auto";
+    } else {
+      style.width = "100%";
+    }
     return (
       <>
-        <img src={url} alt={description} className="edit-image"></img>
+        <img src={url} alt={description} onLoad={this.onImageLoad} style={style} className="edit-image"></img>
         <form className="edit-image-form" onSubmit={this.onFormSubmit}>
           <div className="form-group">
             <textarea
