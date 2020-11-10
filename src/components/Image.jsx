@@ -7,9 +7,12 @@ import EditImage from "./EditImage";
 class Image extends React.Component {
   state = {
     imageLoaded: false,
+    size: "laptop"
   };
 
   async componentDidMount() {
+    this.handleViewSize()
+    window.addEventListener('resize', this.handleViewSize)
     this.fetchImage();
   }
 
@@ -38,6 +41,22 @@ class Image extends React.Component {
       });
     }
   };
+
+  handleViewSize = () => {
+    if (window.innerWidth < 400) {
+      this.setState((state) => {
+        if (state.size === "laptop") {
+          return { size: "mobile" }
+        }
+      })
+    } else {
+      this.setState((state) => {
+        if (state.size === "mobile") {
+          return { size: "laptop" }
+        }
+      })
+    }
+  }
 
   onEditLinkClick = () => {
     this.setState({
@@ -68,7 +87,7 @@ class Image extends React.Component {
   }
 
   render() {
-    const { imageLoaded, portrait, day, id, edit } = this.state;
+    const { imageLoaded, portrait, day, id, edit, size } = this.state;
     const style = {};
     if (!day) {
       return null;
@@ -80,12 +99,14 @@ class Image extends React.Component {
     if (!imageLoaded) {
       style.visibility = "hidden";
     }
-    if (portrait) {
+    if (portrait && size === "laptop") {
       style.width = "";
-      style.maxHeight = "700px";
+      style.height = "600px";
       style.margin = "0 auto";
     } else {
       style.width = "100%";
+      style.height = "auto"
+      style.margin = "0 auto";
     }
     return (
       <>
