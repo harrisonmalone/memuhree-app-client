@@ -43,7 +43,7 @@ class Image extends React.Component {
   };
 
   handleViewSize = () => {
-    if (window.innerWidth < 400) {
+    if (window.innerWidth < 460) {
       this.setState((state) => {
         if (state.size === "laptop") {
           return { size: "mobile" }
@@ -66,8 +66,7 @@ class Image extends React.Component {
 
   toggleEdit = (newDescription) => {
     this.setState((state) => {
-      const updatedDay = { ...this.state.day, description: newDescription };
-      console.log(updatedDay);
+      const updatedDay = { ...state.day, description: newDescription };
       return {
         edit: false,
         day: updatedDay,
