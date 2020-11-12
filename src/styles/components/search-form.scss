@@ -1,0 +1,19 @@
+
+.search-form {
+  display: flex;
+  flex-direction: column;
+  .search-label {
+    font-size: x-large;
+  }
+  #search {
+    height: 32px;
+    font-size: 25px;
+  }
+}
+
+.result {
+  p {
+    font-size: x-large;
+    margin: 16px 0px;
+  }
+}
