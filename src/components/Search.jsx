@@ -2,60 +2,42 @@ import React from "react";
 
 class Image extends React.Component {
   state = {
-    imageLoaded: false,
-  };
-
-  async componentDidMount() {
-    const params = new URLSearchParams(window.location.search)
-    const file = params.get('file')
-    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/searches?file=${file}`);
-    const image = await response.text();
-    this.setState({
-      image: image,
-    });
+    images: null
   }
 
-  onImageLoad = (e) => {
-    const { clientHeight, clientWidth } = e.target;
-    if (clientHeight > clientWidth) {
+  onInputChange = async (e) => {
+    const value = e.target.value
+    const len = value.length
+    if (len === 4 || len === 7 || len === 10) {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/searches?name=${value}`)
+      const images = await response.json()
       this.setState({
-        imageLoaded: true,
-        portrait: true,
-      });
-    } else {
-      this.setState({
-        imageLoaded: true,
-      });
+        images: images
+      })
     }
-  };
+  }
 
   render() {
-    const { imageLoaded, portrait, image } = this.state;
-    const style = {};
-    if (!image) {
-      return null;
-    }
-    if (!imageLoaded) {
-      style.visibility = "hidden";
-    }
-    if (portrait) {
-      style.width = "";
-      style.maxHeight = "700px";
-      style.margin = "0 auto";
-    } else {
-      style.width = "100%";
-    }
+    const { images } = this.state
     return (
-      <>
-        <img
-          src={image}
-          alt={image}
-          style={style}
-          className="image"
-          onLoad={this.onImageLoad}
-        ></img>
-      </>
-    );
+      <div>
+        <form className="search-form">
+          <h1 class="search-label">Search bucket</h1>
+          <input type="text" name="search" id="search" placeholder="2020-10-02" onChange={this.onInputChange} />
+        </form>
+        <div className="results">
+          {images && images.map((image, index) => {
+            return (
+              <div key={index} className="result">
+                <a href={image.url} target="_blank" rel="noopener noreferrer">
+                  <p>{image.name}</p>
+                </a>
+              </div>
+            )
+          })}
+        </div>
+      </div>
+    )
   }
 }
 
