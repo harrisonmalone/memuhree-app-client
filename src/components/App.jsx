@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Link } from "react-router-dom";
 import Image from "./Image";
 import Images from "./Images";
 import NewImage from "./NewImage";
@@ -30,12 +30,17 @@ class App extends React.Component {
       );
     }
     return (
-      <Switch>
-        <Route exact path={["/", "/images"]} component={Images} />
-        <Route exact path="/images/new" component={NewImage} />
-        <Route exact path="/images/search" component={Search} />
-        <Route exact path="/images/:id" component={Image} />
-      </Switch>
+      <div>
+        <Link to="/images" className="logo">
+          <h2 className="logo-text"><span role="img" aria-label="camera logo">📸</span></h2>
+        </Link>
+        <Switch>
+          <Route exact path={["/", "/images"]} component={Images} />
+          <Route exact path="/images/new" component={NewImage} />
+          <Route exact path="/images/search" component={Search} />
+          <Route exact path="/images/:id" component={Image} />
+        </Switch>
+      </div>
     );
   }
 }
