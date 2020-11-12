@@ -1,7 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlusSquare } from "@fortawesome/free-solid-svg-icons";
-import { faArchive } from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faArchive, faPlusSquare } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import moment from "moment";
 import HelperLink from "./HelperLink";
@@ -10,6 +9,7 @@ class Images extends React.Component {
   state = {
     plus: <FontAwesomeIcon icon={faPlusSquare} />,
     archive: <FontAwesomeIcon icon={faArchive} />,
+    search: <FontAwesomeIcon icon={faSearch} />,
     days: null,
   };
 
@@ -32,11 +32,10 @@ class Images extends React.Component {
   };
 
   render() {
-    const { days, plus, archive } = this.state;
+    const { days, plus, archive, search } = this.state;
     return (
       days && (
         <>
-          <h2 className="logo">Recapture</h2>
           <div className="days-container">
             {days.map((day, index) => {
               const date = moment(day.taken).format("Do MMMM YYYY");
@@ -51,6 +50,9 @@ class Images extends React.Component {
               <Link to="/images/new">{plus}</Link>
               <Link to="/images" onClick={this.onArchiveClick}>
                 {archive}
+              </Link>
+              <Link to="/images/search">
+                {search}
               </Link>
             </div>
           </div>
