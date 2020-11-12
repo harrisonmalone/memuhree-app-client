@@ -16,6 +16,10 @@ class Image extends React.Component {
     this.fetchImage();
   }
 
+  async componentWillUnmount() {
+    window.removeEventListener('resize', this.handleViewSize)
+  }
+
   fetchImage = async () => {
     const { id } = this.props.match.params;
     const response = await fetch(
@@ -101,11 +105,11 @@ class Image extends React.Component {
     if (portrait && size === "laptop") {
       style.width = "";
       style.height = "600px";
-      style.margin = "0 auto";
+      style.margin = "18px auto";
     } else {
       style.width = "100%";
       style.height = "auto"
-      style.margin = "0 auto";
+      style.margin = "18px auto";
     }
     return (
       <>
