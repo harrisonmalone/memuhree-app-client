@@ -48,18 +48,8 @@ class EditImage extends React.Component {
   };
 
   render() {
-    const { url, description, imageLoaded, portrait } = this.state;
-    const style = {}
-    if (!imageLoaded) {
-      style.visibility = "hidden";
-    }
-    if (portrait) {
-      style.width = "";
-      style.maxHeight = "700px";
-      style.margin = "0 auto";
-    } else {
-      style.width = "100%";
-    }
+    const { url, description } = this.state;
+    const { style } = this.props
     return (
       <>
         <img src={url} alt={description} onLoad={this.onImageLoad} style={style} className="edit-image"></img>
