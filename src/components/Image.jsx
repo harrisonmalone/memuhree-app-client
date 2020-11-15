@@ -96,9 +96,6 @@ class Image extends React.Component {
       return null;
     }
     const date = moment(day.taken).format("Do MMMM YYYY");
-    if (edit) {
-      return <EditImage day={day} toggleEdit={this.toggleEdit} />;
-    }
     if (!imageLoaded) {
       style.visibility = "hidden";
     }
@@ -110,6 +107,9 @@ class Image extends React.Component {
       style.width = "100%";
       style.height = "auto"
       style.margin = "18px auto";
+    }
+    if (edit) {
+      return <EditImage day={day} toggleEdit={this.toggleEdit} style={style} />;
     }
     return (
       <>
