@@ -23,6 +23,14 @@ class NewImage extends React.Component {
     }
   };
 
+  componentDidMount() {
+    if (this.props.location?.state?.file) {
+      this.setState({
+        file: this.props.location.state.file
+      })
+    }
+  }
+
   onInputChange = (e) => {
     this.setState({
       [e.target.id]: e.target.value,
