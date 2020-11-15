@@ -1,19 +1,19 @@
+.search-header {
+  font-size: x-large;
+}
 
 .search-form {
   display: flex;
   flex-direction: column;
-  .search-label {
-    font-size: x-large;
-  }
   #search {
-    height: 32px;
-    font-size: 25px;
+    height: 25px;
+    font-size: 20px;
   }
 }
 
 .result {
   p {
-    font-size: x-large;
+    font-size: large;
     margin: 16px 0px;
   }
 }
