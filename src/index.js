@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import App from './components/App';
 import Container from './layouts/Container'
 import { BrowserRouter } from 'react-router-dom'
@@ -13,3 +14,5 @@ ReactDOM.render(
   </BrowserRouter>,
   document.getElementById('root')
 );
+
+serviceWorkerRegistration.register();
