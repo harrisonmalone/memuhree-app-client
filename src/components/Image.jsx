@@ -79,14 +79,17 @@ class Image extends React.Component {
   };
 
   onSpanDeleteClick = async (e) => {
-    const { id } = this.state
-    await fetch(`${process.env.REACT_APP_BACKEND_URL}/days/${id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      }
-    });
-    this.props.history.push("/images")
+    const wishToDelete = window.confirm("Do you wish to delete this image?")
+    if (wishToDelete) {
+      const { id } = this.state
+      await fetch(`${process.env.REACT_APP_BACKEND_URL}/days/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        }
+      });
+      this.props.history.push("/images")
+    }
   }
 
   render() {
