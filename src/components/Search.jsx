@@ -128,6 +128,7 @@ class Image extends React.Component {
                       alt="preview"
                     />
                   )}
+                  <hr></hr>
                 </div>
               );
             })}
