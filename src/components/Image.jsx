@@ -125,16 +125,16 @@ class Image extends React.Component {
         ></img>
         {this.state.imageLoaded && (
           <>
-            <h2>
+            <h2 style={{margin: "0px"}}>
               {date}
-              <HelperLink>
-                <a
-                  href={`https://www.google.com/maps/search/?api=1&query=${day.location}`}
-                >
-                  {day.location}
-                </a>
-              </HelperLink>
             </h2>
+            <HelperLink>
+              <a
+                href={`https://www.google.com/maps/search/?api=1&query=${day.location}`}
+              >
+                {day.location}
+              </a>
+            </HelperLink>
             <p>
               {day.description}
               <HelperLink>
