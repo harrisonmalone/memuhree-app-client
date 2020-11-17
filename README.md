@@ -6,7 +6,6 @@
 - Connect to S3 bucket
 - Meant to complement photo management, I'm using Transmit and uploading photos to S3 with specific naming convention
 - Super fast and light weight
-- Receive reminder emails every 3 days to talk about new image, will just pick a random image from an S3 bucket
 - Location automatically opens up in Google Maps
 
 ## Demo
