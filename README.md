@@ -1,4 +1,4 @@
-# Recapture App
+# Memuhree
 
 ## Features
 
@@ -11,7 +11,7 @@
 
 ## Demo
 
-![](https://harrisons-shared-images.s3.ap-southeast-2.amazonaws.com/screen_cast_reapture_2.gif)
+![](https://hm-shared-files.s3.ap-southeast-2.amazonaws.com/memuhree_features_1.gif)
 
 The user starts on the index page for all images. This page lists images in descending order based on date. They then click on a date link and navigate to the show image page. This page displays the image itself, the date and a description.
 
