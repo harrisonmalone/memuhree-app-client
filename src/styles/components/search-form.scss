@@ -5,16 +5,26 @@
 .search-form {
   display: flex;
   flex-direction: column;
-  #search {
-    height: 25px;
-    font-size: 20px;
-    font-size: 20px;
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0px;
+    #search {
+      height: 25px;
+      font-size: 20px;
+      font-size: 20px;
+    }
   }
 }
 
 .result {
   p {
     font-size: large;
-    margin: 16px 0px;
+    margin: 5px 0px;
   }
+}
+
+.preview-image {
+  width: 200px;
+  margin: 10px 0px;
 }
