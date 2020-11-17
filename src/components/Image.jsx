@@ -104,7 +104,7 @@ class Image extends React.Component {
     }
     if (portrait && size === "laptop") {
       style.width = "";
-      style.height = "600px";
+      style.height = "500px";
       style.margin = "18px auto";
     } else {
       style.width = "100%";
