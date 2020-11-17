@@ -47,6 +47,12 @@ class EditImage extends React.Component {
     this.props.toggleEdit(description);
   };
 
+  onCancelClick = (e) => {
+    this.setState({
+      edit: false
+    })
+  }
+
   render() {
     const { url, description } = this.state;
     const { style } = this.props
@@ -63,7 +69,10 @@ class EditImage extends React.Component {
               onChange={this.onTextAreaChange}
             />
           </div>
-          <input id="submit" type="submit" value="Edit" />
+          <div class="submit-container">
+            <input id="submit" type="submit" value="Edit" />
+            <button id="cancel" onClick={this.onCancelClick}>Cancel</button>
+          </div>
         </form>
       </>
     );

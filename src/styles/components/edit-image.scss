@@ -17,8 +17,10 @@
     font-size: 20px;
     resize: none;
   }
-  #submit {
+  #submit, #cancel {
     width: 100px;
     height: 40px;
+    font-size: 20px;
+    margin-right: 10px;
   }
 }
