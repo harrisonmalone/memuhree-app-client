@@ -1,75 +1,139 @@
 import React from "react";
-import { Link } from 'react-router-dom'
-import HelperLink from './HelperLink'
+import { Link } from "react-router-dom";
+import HelperLink from "./HelperLink";
+import moment from "moment";
 
 class Image extends React.Component {
   state = {
     images: null,
     preview: false,
-    message: null,
-    imageLoaded: false
+    message: "",
+    imageLoaded: false,
+    date: this.generateYearAndMonth(),
+  };
+
+  generateYearAndMonth() {
+    const today = new Date();
+    const month = today.getMonth() + 1;
+    const year = today.getFullYear();
+    return `${year}-${month}`;
   }
 
   onInputChange = async (e) => {
-    const value = e.target.value
-    const len = value.length
-    if (len === 4 || len === 7 || len === 10) {
-      this.setState({ loading: true, message: null, images: null })
-      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/searches?name=${value}`)
-      const images = await response.json()
-      if (images.length === 0) {
-        this.setState({
-          loading: false,
-          message: "No images returned from this search"
-        })
-      } else {
-        this.setState({
-          images: images,
-          loading: false
-        })
-      }
+    const value = e.target.value;
+    this.setState({ date: value });
+  };
+
+  onFormSubmit = async (e) => {
+    this.setState({ message: "", loading: true, images: null });
+    e.preventDefault();
+    const { date } = this.state;
+    const response = await fetch(
+      `${process.env.REACT_APP_BACKEND_URL}/searches?name=${date}`
+    );
+    const images = await response.json();
+    if (images.length === 0) {
+      this.setState({
+        loading: false,
+        message: "No images returned from this search",
+      });
+    } else {
+      this.setState({
+        images: images,
+        loading: false,
+      });
     }
-  }
+  };
 
   onImageLoad = () => {
     this.setState({
-      imageLoaded: true
-    })
-  }
+      imageLoaded: true,
+    });
+  };
 
   onPreviewClick = (url) => {
-    this.setState({ imageLoaded: false, preview: true, previewUrl: url  })
-  }
+    this.setState({ imageLoaded: false, preview: true, previewUrl: url });
+  };
+
+  formatDate = (date) => {
+    return moment(date).format("MMMM Do YYYY, h:mm:ss a");
+  };
 
   render() {
-    const { images, loading, preview, previewUrl, message, imageLoaded } = this.state
-    const style = {}
+    const {
+      images,
+      loading,
+      preview,
+      previewUrl,
+      message,
+      imageLoaded,
+      date,
+    } = this.state;
+    const style = {};
     if (!imageLoaded) {
       style.visibility = "hidden";
     }
     return (
       <div>
-        <form className="search-form">
+        <form className="search-form" onSubmit={this.onFormSubmit}>
           <h1 className="search-header">Search bucket</h1>
-          <input type="text" name="search" id="search" placeholder="2020-10-02" onChange={this.onInputChange} />
+          <div className="form-group">
+            <input
+              type="month"
+              id="search"
+              name="search"
+              min="2000-01"
+              value={date}
+              onChange={this.onInputChange}
+            ></input>
+          </div>
+          <div className="form-group">
+            <input type="submit" value="Search" />
+          </div>
         </form>
         {loading && <h1 className="search-header">Loading</h1>}
         <div className="results">
           {message && <p>{message}</p>}
-          {images && images.map((image, index) => {
-            return (
-              <div key={index} className="result">
-                <p>{image.name} <HelperLink><Link to="/images/search" onClick={() => this.onPreviewClick(image.url)}>Preview</Link></HelperLink> <HelperLink><Link to={{
-                  pathname: "/images/new",
-                  state: { file: image.name }
-                }}>Populate</Link></HelperLink></p>
-                {preview && image.url === previewUrl && <img style={style} src={previewUrl} onLoad={this.onImageLoad} width="200" alt="preview" />}
-              </div>
-            )
-          })}
+          {images &&
+            images.map((image, index) => {
+              return (
+                <div key={index} className="result">
+                  <p>{this.formatDate(image.date)}</p>
+                  <div className="result-links">
+                    <HelperLink noMargin>
+                      <Link
+                        to="/images/search"
+                        onClick={() => this.onPreviewClick(image.url)}
+                      >
+                        Preview
+                      </Link>
+                    </HelperLink>{" "}
+                    <HelperLink noMargin>
+                      <Link
+                        to={{
+                          pathname: "/images/new",
+                          state: { file: image.name },
+                        }}
+                      >
+                        Populate
+                      </Link>
+                    </HelperLink>
+                  </div>
+                  {preview && image.url === previewUrl && (
+                    <img
+                      style={style}
+                      src={previewUrl}
+                      onLoad={this.onImageLoad}
+                      className="preview-image"
+                      alt="preview"
+                    />
+                  )}
+                </div>
+              );
+            })}
         </div>
       </div>
-    )
+    );
   }
 }
 
