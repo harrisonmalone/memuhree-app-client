@@ -128,14 +128,14 @@ class Image extends React.Component {
             <h2 style={{margin: "0px"}}>
               {date}
             </h2>
-            <HelperLink>
+            <HelperLink noMargin>
               <a
                 href={`https://www.google.com/maps/search/?api=1&query=${day.location}`}
               >
                 {day.location}
               </a>
             </HelperLink>
-            <p>
+            <p style={{ margin: "10px 0px"}}>
               {day.description}
               <HelperLink>
                 <Link to={`/images/${id}`} onClick={this.onEditLinkClick}>
