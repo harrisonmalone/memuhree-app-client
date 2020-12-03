@@ -32,7 +32,7 @@ class App extends React.Component {
     return (
       <div>
         <Link to="/images" className="logo">
-          <h2 className="logo-text"><span role="img" aria-label="camera logo">📸</span></h2>
+          <h2 className="logo-text">Photos</h2>
         </Link>
         <Switch>
           <Route exact path={["/", "/images"]} component={Images} />
