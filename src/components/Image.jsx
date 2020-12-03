@@ -125,7 +125,7 @@ class Image extends React.Component {
         ></img>
         {this.state.imageLoaded && (
           <>
-            <h2 style={{margin: "0px"}}>
+            <h2 style={{margin: "0px", fontSize: "x-large", fontWeight: 900}}>
               {date}
             </h2>
             <HelperLink noMargin>
@@ -135,7 +135,7 @@ class Image extends React.Component {
                 {day.location}
               </a>
             </HelperLink>
-            <p style={{ margin: "10px 0px"}}>
+            <p style={{ margin: "10px 0px", fontSize: "large"}}>
               {day.description}
               <HelperLink>
                 <Link to={`/images/${id}`} onClick={this.onEditLinkClick}>
