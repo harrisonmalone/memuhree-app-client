@@ -31,9 +31,13 @@ class App extends React.Component {
     }
     return (
       <div>
-        <Link to="/images" className="logo">
-          <h2 className="logo-text">Photos</h2>
-        </Link>
+        <nav>
+            <h1 className="logo-text">
+              <Link to="/images" className="logo">
+                Photos
+              </Link>
+            </h1>
+        </nav>
         <Switch>
           <Route exact path={["/", "/images"]} component={Images} />
           <Route exact path="/images/new" component={NewImage} />
