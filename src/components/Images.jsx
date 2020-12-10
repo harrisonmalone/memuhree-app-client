@@ -159,7 +159,7 @@ class Images extends React.Component {
                   className="image-frame"
                   style={{
                     backgroundImage: `url(${day.url})`,
-                    height: "400px",
+                    height: "500px",
                     backgroundPosition: "center",
                     backgroundSize: "cover",
                   }}
