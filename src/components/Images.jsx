@@ -167,15 +167,15 @@ class Images extends React.Component {
           {days.map((day, index) => {
             return (
               <div key={index} className="frame">
-                <div
-                  className="image-frame"
+                <img
+                  src={day.url}
                   style={{
-                    backgroundImage: `url(${day.url})`,
                     height: day.orientation === "landscape" ? "500px" : "700px",
-                    backgroundPosition: "center",
-                    backgroundSize: "cover",
+                    margin: "0 auto",
+                    display: "block"
                   }}
-                ></div>
+                  alt={day.description}
+                />
                 <div className="content" style={{ padding: "0px 5px" }}>
                   <h3 style={{ color: "0b0b0b" }}>
                     {moment(day.taken).format("Do MMMM YYYY")}
@@ -192,7 +192,7 @@ class Images extends React.Component {
               </div>
             );
           })}
-          <div className="pagination" style={{ fontSize: "20px", margin: "10px 0px", padding: "0px 5px" }}>
+          <div className="pagination" style={{ fontSize: "20px", margin: "30px 0px", padding: "0px 5px" }}>
             {this.renderPaginationButtons()}
           </div>
         </div>
@@ -202,30 +202,3 @@ class Images extends React.Component {
 }
 
 export default Images;
-
-// return (
-//   days && (
-//     <>
-//       <div className="days-container">
-//         {days.map((day, index) => {
-//           const date = moment(day.taken).format("Do MMMM YYYY");
-//           return (
-//             <p key={index}>
-//               <Link to={`/images/${day.id}`}>{date}</Link>
-//               <HelperLink black>{day.location}</HelperLink>
-//             </p>
-//           );
-//         })}
-//         <div className="icons">
-//           <Link to="/images/new">{plus}</Link>
-//           <Link to="/images" onClick={this.onArchiveClick}>
-//             {archive}
-//           </Link>
-//           <Link to="/images/search">
-//             {search}
-//           </Link>
-//         </div>
-//       </div>
-//     </>
-//   )
-// );
