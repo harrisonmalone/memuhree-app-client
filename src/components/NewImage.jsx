@@ -40,43 +40,45 @@ class NewImage extends React.Component {
   render() {
     const { file, description, location } = this.state;
     return (
-      <form className="new-image-form" onSubmit={this.onFormSubmit}>
-        <div className="form-group">
-          <label htmlFor="file">File</label>
-          <input
-            type="text"
-            name="file"
-            id="file"
-            placeholder="2020-10-02-17-47-57.jpg"
-            onChange={this.onInputChange}
-            value={file}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="description">Description</label>
-          <textarea
-            name="description"
-            id="description"
-            placeholder="Went for a walk after work. Was the first beautiful spring afternoon of 2020."
-            onChange={this.onInputChange}
-            value={description}
-          ></textarea>
-        </div>
-        <div className="form-group">
-          <label htmlFor="location">Location</label>
-          <input
-            type="text"
-            name="location"
-            id="location"
-            placeholder="Burnley"
-            onChange={this.onInputChange}
-            value={location}
-          />
-        </div>
-        <div className="form-group">
-          <input id="submit" type="submit" value="Submit" />
-        </div>
-      </form>
+      <div style={{ padding: "0px 10px"}}>
+        <form className="new-image-form" onSubmit={this.onFormSubmit}>
+          <div className="form-group">
+            <label htmlFor="file">File</label>
+            <input
+              type="text"
+              name="file"
+              id="file"
+              placeholder="2020-10-02-17-47-57.jpg"
+              onChange={this.onInputChange}
+              value={file}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="description">Description</label>
+            <textarea
+              name="description"
+              id="description"
+              placeholder="Went for a walk after work. Was the first beautiful spring afternoon of 2020."
+              onChange={this.onInputChange}
+              value={description}
+            ></textarea>
+          </div>
+          <div className="form-group">
+            <label htmlFor="location">Location</label>
+            <input
+              type="text"
+              name="location"
+              id="location"
+              placeholder="Burnley"
+              onChange={this.onInputChange}
+              value={location}
+            />
+          </div>
+          <div className="form-group">
+            <input id="submit" type="submit" value="Submit" />
+          </div>
+        </form>
+      </div>
     );
   }
 }
