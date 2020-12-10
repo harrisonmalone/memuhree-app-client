@@ -170,8 +170,7 @@ class Images extends React.Component {
                 <img
                   src={day.url}
                   style={{
-                    height: day.orientation === "landscape" ? "auto" : "700px",
-                    width: day.orientation === "landscape" ? "100%" : "auto",
+                    width: "100%",
                     margin: "0 auto",
                     display: "block"
                   }}
