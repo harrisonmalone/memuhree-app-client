@@ -5,6 +5,10 @@ import Images from "./Images";
 import NewImage from "./NewImage";
 import Login from "./Login";
 import Search from "./Search";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faSearch
+} from "@fortawesome/free-solid-svg-icons";
 
 class App extends React.Component {
   state = {
@@ -32,11 +36,12 @@ class App extends React.Component {
     return (
       <div>
         <nav>
-            <h1 className="logo-text">
-              <Link to="/images" className="logo">
-                Photos
-              </Link>
-            </h1>
+          <Link to="/images" className="logo">
+            Photos
+          </Link>
+          <Link to="/images/search">
+            <FontAwesomeIcon icon={faSearch} />
+          </Link>
         </nav>
         <Switch>
           <Route exact path={["/", "/images"]} component={Images} />

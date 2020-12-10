@@ -1,7 +1,12 @@
-.logo-text {
-  font-size: xx-large;
-  margin: 20px 0px;
-  .logo {
+nav {
+  padding: 20px 5px;
+  display: flex;
+  justify-content: space-between;
+  position: sticky;
+  top: 0px;
+  background: white;
+  a {
+    font-size: 30px;
     text-decoration: none;
     color: black;
   }
