@@ -31,17 +31,17 @@ class EditImage extends React.Component {
       },
       body: JSON.stringify(day),
     });
-    this.redirectToHome()
+    this.redirectToHome();
   };
 
   redirectToHome = (e) => {
-    this.props.history.push("/images")
-  }
+    this.props.history.push("/images");
+  };
 
   render() {
     const { url, description } = this.state;
     if (!url) {
-      return <Redirect to="/images" />
+      return <Redirect to="/images" />;
     }
     return (
       <>
@@ -58,7 +58,9 @@ class EditImage extends React.Component {
           </div>
           <div className="submit-container">
             <input id="submit" type="submit" value="Edit" />
-            <button id="cancel" type="button" onClick={this.redirectToHome}>Cancel</button>
+            <button id="cancel" type="button" onClick={this.redirectToHome}>
+              Cancel
+            </button>
           </div>
         </form>
       </>

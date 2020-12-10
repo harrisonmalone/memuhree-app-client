@@ -1,8 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faSearch,
-} from "@fortawesome/free-solid-svg-icons";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import moment from "moment";
 import HelperLink from "./HelperLink";
@@ -25,9 +23,9 @@ class Images extends React.Component {
       const img = new Image();
       img.onload = () => {
         if (img.height > img.width) {
-          day.orientation = "portrait"
+          day.orientation = "portrait";
         } else {
-          day.orientation = "landscape"
+          day.orientation = "landscape";
         }
         this.setState((state) => {
           if (state.loaded === days.length - 1) {
@@ -88,9 +86,9 @@ class Images extends React.Component {
       const img = new Image();
       img.onload = () => {
         if (img.height > img.width) {
-          day.orientation = "portrait"
+          day.orientation = "portrait";
         } else {
-          day.orientation = "landscape"
+          day.orientation = "landscape";
         }
         this.setState((state) => {
           if (state.loaded === days.length - 1) {
@@ -166,7 +164,7 @@ class Images extends React.Component {
                   style={{
                     width: "100%",
                     margin: "0 auto",
-                    display: "block"
+                    display: "block",
                   }}
                   alt={day.description}
                 />
@@ -177,7 +175,11 @@ class Images extends React.Component {
                   <p>
                     {day.description}
                     <HelperLink>
-                      <Link to={{pathname: `/images/${day.id}/edit`, state: day}}>Edit</Link>
+                      <Link
+                        to={{ pathname: `/images/${day.id}/edit`, state: day }}
+                      >
+                        Edit
+                      </Link>
                     </HelperLink>
                     <HelperLink>
                       <span onClick={() => this.onSpanDeleteClick(day.id)}>
@@ -189,7 +191,10 @@ class Images extends React.Component {
               </div>
             );
           })}
-          <div className="pagination" style={{ fontSize: "20px", margin: "30px 0px", padding: "0px 5px" }}>
+          <div
+            className="pagination"
+            style={{ fontSize: "20px", margin: "30px 0px", padding: "0px 5px" }}
+          >
             {this.renderPaginationButtons()}
           </div>
         </div>

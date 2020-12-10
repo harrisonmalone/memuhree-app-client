@@ -18,7 +18,7 @@ class Login extends React.Component {
 
   render() {
     return (
-      <>
+      <div style={{padding: "0px 5px"}}>
         <h1>Login</h1>
         <form className="login-form" onSubmit={this.onFormSubmit}>
           <div className="form-group">
@@ -35,7 +35,7 @@ class Login extends React.Component {
             <input id="submit" type="submit" value="Sign in" />
           </div>
         </form>
-      </>
+      </div>
     );
   }
 }

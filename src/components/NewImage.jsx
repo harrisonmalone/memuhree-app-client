@@ -26,8 +26,8 @@ class NewImage extends React.Component {
   componentDidMount() {
     if (this.props.location?.state?.file) {
       this.setState({
-        file: this.props.location.state.file
-      })
+        file: this.props.location.state.file,
+      });
     }
   }
 
@@ -40,7 +40,7 @@ class NewImage extends React.Component {
   render() {
     const { file, description, location } = this.state;
     return (
-      <div style={{ padding: "0px 10px"}}>
+      <div style={{ padding: "0px 10px" }}>
         <form className="new-image-form" onSubmit={this.onFormSubmit}>
           <div className="form-group">
             <label htmlFor="file">File</label>

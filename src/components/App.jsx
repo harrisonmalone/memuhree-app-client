@@ -1,6 +1,5 @@
 import React from "react";
 import { Switch, Route, Link } from "react-router-dom";
-import Image from "./Image";
 import Images from "./Images";
 import NewImage from "./NewImage";
 import Login from "./Login";
@@ -46,7 +45,6 @@ class App extends React.Component {
           <Route exact path={["/", "/images"]} component={Images} />
           <Route exact path="/images/new" component={NewImage} />
           <Route exact path="/images/search" component={Search} />
-          <Route exact path="/images/:id" component={Image} />
           <Route exact path="/images/:id/edit" component={EditImage} />
         </Switch>
       </div>
