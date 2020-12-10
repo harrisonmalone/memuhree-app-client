@@ -5,10 +5,9 @@ import Images from "./Images";
 import NewImage from "./NewImage";
 import Login from "./Login";
 import Search from "./Search";
+import EditImage from "./EditImage";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faSearch
-} from "@fortawesome/free-solid-svg-icons";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 class App extends React.Component {
   state = {
@@ -48,6 +47,7 @@ class App extends React.Component {
           <Route exact path="/images/new" component={NewImage} />
           <Route exact path="/images/search" component={Search} />
           <Route exact path="/images/:id" component={Image} />
+          <Route exact path="/images/:id/edit" component={EditImage} />
         </Switch>
       </div>
     );

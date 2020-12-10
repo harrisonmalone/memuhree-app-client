@@ -177,6 +177,9 @@ class Images extends React.Component {
                   <p>
                     {day.description}
                     <HelperLink>
+                      <Link to={{pathname: `/images/${day.id}/edit`, state: day}}>Edit</Link>
+                    </HelperLink>
+                    <HelperLink>
                       <span onClick={() => this.onSpanDeleteClick(day.id)}>
                         Delete
                       </span>

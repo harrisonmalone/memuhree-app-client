@@ -1,12 +1,13 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
 
 class EditImage extends React.Component {
   state = {
-    url: this.props.day.url,
-    description: this.props.day.description,
-    file: this.props.day.file,
-    location: this.props.day.location,
-    id: this.props.day.id,
+    url: this.props.location.state.url,
+    description: this.props.location.state.description,
+    file: this.props.location.state.file,
+    location: this.props.location.location,
+    id: this.props.match.params.id,
   };
 
   onTextAreaChange = (e) => {
@@ -15,21 +16,8 @@ class EditImage extends React.Component {
     });
   };
 
-  onImageLoad = (e) => {
-    const { clientHeight, clientWidth } = e.target;
-    if (clientHeight > clientWidth) {
-      this.setState({
-        imageLoaded: true,
-        portrait: true,
-      });
-    } else {
-      this.setState({
-        imageLoaded: true,
-      });
-    }
-  };
-
   onFormSubmit = async (e) => {
+    console.log("here")
     e.preventDefault();
     const { file, description, location, id } = this.state;
     const day = {
@@ -44,21 +32,21 @@ class EditImage extends React.Component {
       },
       body: JSON.stringify(day),
     });
-    this.props.toggleEdit(description);
+    this.redirectToHome()
   };
 
-  onCancelClick = (e) => {
-    this.setState({
-      edit: false
-    })
+  redirectToHome = (e) => {
+    this.props.history.push("/images")
   }
 
   render() {
     const { url, description } = this.state;
-    const { style } = this.props
+    if (!url) {
+      return <Redirect to="/images" />
+    }
     return (
       <>
-        <img src={url} alt={description} onLoad={this.onImageLoad} style={style} className="edit-image"></img>
+        <img src={url} alt={description} style={{ width: "100%" }} />
         <form className="edit-image-form" onSubmit={this.onFormSubmit}>
           <div className="form-group">
             <textarea
@@ -69,9 +57,9 @@ class EditImage extends React.Component {
               onChange={this.onTextAreaChange}
             />
           </div>
-          <div class="submit-container">
+          <div className="submit-container">
             <input id="submit" type="submit" value="Edit" />
-            <button id="cancel" onClick={this.onCancelClick}>Cancel</button>
+            <button id="cancel" type="button" onClick={this.redirectToHome}>Cancel</button>
           </div>
         </form>
       </>
