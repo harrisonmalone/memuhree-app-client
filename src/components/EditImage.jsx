@@ -17,7 +17,6 @@ class EditImage extends React.Component {
   };
 
   onFormSubmit = async (e) => {
-    console.log("here")
     e.preventDefault();
     const { file, description, location, id } = this.state;
     const day = {
