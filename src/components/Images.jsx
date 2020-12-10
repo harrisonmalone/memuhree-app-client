@@ -2,8 +2,6 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faSearch,
-  faArchive,
-  faPlusSquare,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import moment from "moment";
@@ -11,8 +9,6 @@ import HelperLink from "./HelperLink";
 
 class Images extends React.Component {
   state = {
-    plus: <FontAwesomeIcon icon={faPlusSquare} />,
-    archive: <FontAwesomeIcon icon={faArchive} />,
     search: <FontAwesomeIcon icon={faSearch} />,
     days: null,
     loaded: 0,
@@ -28,7 +24,6 @@ class Images extends React.Component {
     days.forEach((day) => {
       const img = new Image();
       img.onload = () => {
-        console.dir(img)
         if (img.height > img.width) {
           day.orientation = "portrait"
         } else {
@@ -92,7 +87,6 @@ class Images extends React.Component {
     days.forEach((day) => {
       const img = new Image();
       img.onload = () => {
-        console.dir(img)
         if (img.height > img.width) {
           day.orientation = "portrait"
         } else {
@@ -143,16 +137,16 @@ class Images extends React.Component {
           <Link
             to="/"
             style={{ fontSize: "20px", margin: "10px 10px 10px 0px" }}
-            onClick={() => this.paginate("next")}
+            onClick={() => this.paginate("previous")}
           >
-            Next
+            Previous
           </Link>
           <Link
             to="/"
             style={{ fontSize: "20px", margin: "10px 10px 10px 0px" }}
-            onClick={() => this.paginate("previous")}
+            onClick={() => this.paginate("next")}
           >
-            Previous
+            Next
           </Link>
         </>
       );
