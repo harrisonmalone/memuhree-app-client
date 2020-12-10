@@ -44,7 +44,7 @@ class EditImage extends React.Component {
       return <Redirect to="/images" />;
     }
     return (
-      <>
+      <div style={{ marginBottom: "20px"}}>
         <img src={url} alt={description} style={{ width: "100%" }} />
         <form className="edit-image-form" onSubmit={this.onFormSubmit}>
           <div className="form-group">
@@ -63,7 +63,7 @@ class EditImage extends React.Component {
             </button>
           </div>
         </form>
-      </>
+      </div>
     );
   }
 }
