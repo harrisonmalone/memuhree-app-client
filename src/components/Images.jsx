@@ -28,7 +28,8 @@ class Images extends React.Component {
     days.forEach((day) => {
       const img = new Image();
       img.onload = () => {
-        if (img.naturalHeight > img.naturalWidth) {
+        console.dir(img)
+        if (img.height > img.width) {
           day.orientation = "portrait"
         } else {
           day.orientation = "landscape"
@@ -91,7 +92,8 @@ class Images extends React.Component {
     days.forEach((day) => {
       const img = new Image();
       img.onload = () => {
-        if (img.naturalHeight > img.naturalWidth) {
+        console.dir(img)
+        if (img.height > img.width) {
           day.orientation = "portrait"
         } else {
           day.orientation = "landscape"
@@ -163,7 +165,6 @@ class Images extends React.Component {
       days && (
         <div className="days-container">
           {days.map((day, index) => {
-            console.log(day)
             return (
               <div key={index} className="frame">
                 <div
