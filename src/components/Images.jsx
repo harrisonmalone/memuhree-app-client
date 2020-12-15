@@ -19,29 +19,33 @@ class Images extends React.Component {
       `${process.env.REACT_APP_BACKEND_URL}/days?page=${this.state.page}`
     );
     const { days, last } = await response.json();
-    days.forEach((day) => {
-      const img = new Image();
-      img.onload = () => {
-        if (img.height > img.width) {
-          day.orientation = "portrait";
-        } else {
-          day.orientation = "landscape";
-        }
-        this.setState((state) => {
-          if (state.loaded === days.length - 1) {
-            return {
-              days: days,
-              last: last,
-            };
-          } else {
-            return {
-              loaded: (state.loaded += 1),
-            };
-          }
-        });
-      };
-      img.src = day.url;
-    });
+    this.setState({
+      days: days,
+      last: last
+    })
+    // days.forEach((day) => {
+    //   const img = new Image();
+    //   img.onload = () => {
+    //     if (img.height > img.width) {
+    //       day.orientation = "portrait";
+    //     } else {
+    //       day.orientation = "landscape";
+    //     }
+    //     this.setState((state) => {
+    //       if (state.loaded === days.length - 1) {
+    //         return {
+    //           days: days,
+    //           last: last,
+    //         };
+    //       } else {
+    //         return {
+    //           loaded: (state.loaded += 1),
+    //         };
+    //       }
+    //     });
+    //   };
+    //   img.src = day.url;
+    // });
   }
 
   onArchiveClick = async () => {
@@ -82,30 +86,34 @@ class Images extends React.Component {
       `${process.env.REACT_APP_BACKEND_URL}/days?page=${page}`
     );
     const { days, last } = await response.json();
-    days.forEach((day) => {
-      const img = new Image();
-      img.onload = () => {
-        if (img.height > img.width) {
-          day.orientation = "portrait";
-        } else {
-          day.orientation = "landscape";
-        }
-        this.setState((state) => {
-          if (state.loaded === days.length - 1) {
-            return {
-              days: days,
-              page: page,
-              last: last,
-            };
-          } else {
-            return {
-              loaded: state.loaded + 1,
-            };
-          }
-        });
-      };
-      img.src = day.url;
-    });
+    this.setState({
+      days: days,
+      last: last
+    })
+    // days.forEach((day) => {
+    //   const img = new Image();
+    //   img.onload = () => {
+    //     if (img.height > img.width) {
+    //       day.orientation = "portrait";
+    //     } else {
+    //       day.orientation = "landscape";
+    //     }
+    //     this.setState((state) => {
+    //       if (state.loaded === days.length - 1) {
+    //         return {
+    //           days: days,
+    //           page: page,
+    //           last: last,
+    //         };
+    //       } else {
+    //         return {
+    //           loaded: state.loaded + 1,
+    //         };
+    //       }
+    //     });
+    //   };
+    //   img.src = day.url;
+    // });
   };
 
   renderPaginationButtons = () => {
@@ -167,6 +175,7 @@ class Images extends React.Component {
                     display: "block",
                   }}
                   alt={day.description}
+                  loading="lazy"
                 />
                 <div className="content" style={{ padding: "0px 5px" }}>
                   <h3 style={{ color: "0b0b0b" }}>
