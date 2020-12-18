@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import HelperLink from "./HelperLink";
 import moment from "moment";
 
-class Image extends React.Component {
+class Search extends React.Component {
   state = {
     images: null,
     preview: false,
@@ -91,7 +91,7 @@ class Image extends React.Component {
             <input type="submit" value="Search" />
           </div>
         </form>
-        {loading && <h1 className="search-header">Loading</h1>}
+        {loading && <h1 className="loading-header">Loading</h1>}
         <div className="results">
           {message && <p>{message}</p>}
           {images &&
@@ -138,4 +138,4 @@ class Image extends React.Component {
   }
 }
 
-export default Image;
+export default Search;
