@@ -76,7 +76,7 @@ class Image extends React.Component {
     return (
       <div style={{ padding: "0px 5px" }}>
         <form className="search-form" onSubmit={this.onFormSubmit}>
-          <h1 className="search-header">Search bucket</h1>
+          <h1 className="loading-header">Search bucket</h1>
           <div className="form-group">
             <input
               type="month"
