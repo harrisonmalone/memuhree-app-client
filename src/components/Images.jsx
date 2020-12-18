@@ -156,7 +156,7 @@ class Images extends React.Component {
     if (!days) {
       return (
         <div className="days-container">
-          <h1 className="loading-header">Loading</h1>
+          <h1 className="loading-header" style={{ paddingLeft: "5px" }}>Loading</h1>
         </div>
       ) 
     } else {
