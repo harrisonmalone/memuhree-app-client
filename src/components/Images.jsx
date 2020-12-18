@@ -154,7 +154,11 @@ class Images extends React.Component {
   render() {
     const { days } = this.state
     if (!days) {
-      return <h1 className="loading-header">Search bucket</h1>
+      return (
+        <div className="days-container">
+          <h1 className="loading-header">Loading</h1>
+        </div>
+      ) 
     } else {
       return (
         <div className="days-container">
