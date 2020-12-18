@@ -19,10 +19,6 @@ class Images extends React.Component {
       `${process.env.REACT_APP_BACKEND_URL}/days?page=${this.state.page}`,
     )
     const { days, last } = await response.json()
-    this.setState({
-      days: days,
-      last: last,
-    })
     days.forEach((day) => {
       const img = new Image()
       img.onload = () => {
@@ -86,10 +82,6 @@ class Images extends React.Component {
       `${process.env.REACT_APP_BACKEND_URL}/days?page=${page}`,
     )
     const { days, last } = await response.json()
-    this.setState({
-      days: days,
-      last: last,
-    })
     days.forEach((day) => {
       const img = new Image()
       img.onload = () => {
