@@ -15,7 +15,7 @@ class EditImage extends React.Component {
       description: e.target.value,
     });
   };
-
+  
   onFormSubmit = async (e) => {
     e.preventDefault();
     const { file, description, location, id } = this.state;
@@ -43,7 +43,7 @@ class EditImage extends React.Component {
     if (!url) {
       return <Redirect to="/images" />;
     }
-    return (
+    return (  
       <div style={{ marginBottom: "20px"}}>
         <img src={url} alt={description} style={{ width: "100%" }} />
         <form className="edit-image-form" onSubmit={this.onFormSubmit}>
@@ -58,9 +58,7 @@ class EditImage extends React.Component {
           </div>
           <div className="submit-container">
             <input id="submit" type="submit" value="Edit" />
-            <button id="cancel" type="button" onClick={this.redirectToHome}>
-              Cancel
-            </button>
+            <input id="cancel" type="button" onClick={this.redirectToHome} value="Cancel" />
           </div>
         </form>
       </div>
