@@ -3,10 +3,10 @@ import { Switch, Route, Link } from "react-router-dom";
 import Images from "./Images";
 import NewImage from "./NewImage";
 import Login from "./Login";
-import Search from "./Search";
+import Archive from "./Archive";
 import EditImage from "./EditImage";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faArchive, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 class App extends React.Component {
   state = {
@@ -34,17 +34,24 @@ class App extends React.Component {
     return (
       <div>
         <nav>
-          <Link to="/images" className="logo">
-            Photos
-          </Link>
-          <Link to="/images/search">
-            <FontAwesomeIcon icon={faSearch} />
-          </Link>
+          <div class="header">
+            <Link to="/images" className="logo">
+              Photos
+            </Link>
+          </div>
+          <div class="icons">
+            <Link to="/images/archive">
+              <FontAwesomeIcon icon={faArchive} />
+            </Link>
+            <Link to="/images/new">
+              <FontAwesomeIcon icon={faPlus} />
+            </Link>
+          </div>
         </nav>
         <Switch>
           <Route exact path={["/", "/images"]} component={Images} />
           <Route exact path="/images/new" component={NewImage} />
-          <Route exact path="/images/search" component={Search} />
+          <Route exact path="/images/archive" component={Archive} />
           <Route exact path="/images/:id/edit" component={EditImage} />
         </Switch>
       </div>

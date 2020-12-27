@@ -1,6 +1,6 @@
 import React from "react";
 
-class Search extends React.Component {
+class Archive extends React.Component {
   state = {
     yearsAndMonths: null,
   };
@@ -45,4 +45,4 @@ class Search extends React.Component {
   }
 }
 
-export default Search;
+export default Archive;

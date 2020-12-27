@@ -1,7 +1,6 @@
 nav {
-  padding: 20px 5px;
   display: flex;
-  justify-content: space-between;
+  padding: 20px 5px;
   position: sticky;
   top: 0px;
   background: white;
@@ -9,5 +8,18 @@ nav {
     font-size: 30px;
     text-decoration: none;
     color: black;
+  }
+  .header {
+    width: 80%;
+  }
+  .icons {
+    width: 20%;
+    display: flex;
+    justify-content: space-around;
+    a {
+      font-size: 30px;
+      text-decoration: none;
+      color: black;
+    }
   }
 }
